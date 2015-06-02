@@ -46,3 +46,10 @@ Then, to extract relevant content:
 	extracted_html = extractor.getHTML()
 
 .. _Boilerpipe: http://code.google.com/p/boilerpipe/ 
+
+Other
+=====
+Sloved getImage() jython runtime error by Ninjakannon
+Sloved unicodeerror in extracted some web page
+Add common method load from local file
+
