@@ -50,6 +50,8 @@ Then, to extract relevant content:
 Other
 =====
 ``Sloved getImage() jython runtime error by Ninjakannon
+
 ``Sloved unicodeerror in extracted some web page
+
 ``Add common method load from local file (Extractor(extractor='ArticleExtractor', file='local_file'))
 
