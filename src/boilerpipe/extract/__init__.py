@@ -100,7 +100,17 @@ class Extractor(object):
 
     def getDate(self):
         r='(19[7-9][0-9]|20[0-1][0-9])-(0[1-9]|1[0-2])-([1-2][0-9]|0[1-9]|3[0-1]) ([0-1][0-9]|2[0-4]):([0-5][0-9]):([0-5][0-9])'
-        return re.search(r,self.data).group()
+        #return re.search(r,self.data).group()
+        result=re.search(r , self.data)
+        if result==None:
+            r='(19[7-9][0-9]|20[0-1][0-9])-(0[1-9]|1[0-2])-([1-2][0-9]|0[1-9]|3[0-1])'
+            if re.search(r , self.data)==None:
+                return None
+            else:
+                return re.search(r , self.data).group()
+        else:
+            return re.search(r , self.data).group()
+
 
 
     # def getImages(self):
