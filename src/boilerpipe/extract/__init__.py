@@ -50,12 +50,16 @@ class Extractor(object):
         elif kwargs.get('html'):
             self.data = kwargs['html']
             if not isinstance(self.data, unicode):
-                # self.data = unicode(self.data, charade.detect(self.data)['encoding'])
                 try:
-                    self.data = unicode(self.data, charade.detect(self.data)['encoding'])
+		    self.data = unicode(self.data,'gbk')
+                #self.data = unicode(self.data, charade.detect(self.data)['encoding'])
+                #try:
+                #    self.data = unicode(self.data, charade.detect(self.data)['encoding'])
                 except UnicodeError:
+		    
                     encoding = charade.detect(self.data)['encoding']
-                    self.data = self.data.decode(encoding, 'ignore')
+                    print "charset is :",encoding
+		    self.data = self.data.decode(encoding, 'ignore')
         ## Extractor(extractor='ArticleExtractor',file='/tmp/a.html')
         elif kwargs.get('file'):
             Path = kwargs['file']
@@ -100,9 +104,9 @@ class Extractor(object):
 
     def getDate(self):
         r='(19[7-9][0-9]|20[0-1][0-9])-(0[1-9]|1[0-2])-([1-2][0-9]|0[1-9]|3[0-1]) ([0-1][0-9]|2[0-4]):([0-5][0-9]):([0-5][0-9])'
-        #return re.search(r,self.data).group()
-        result=re.search(r , self.data)
-        if result==None:
+	#return re.search(r,self.data).group()
+	result=re.search(r , self.data)
+   	if result==None:
             r='(19[7-9][0-9]|20[0-1][0-9])-(0[1-9]|1[0-2])-([1-2][0-9]|0[1-9]|3[0-1])'
             if re.search(r , self.data)==None:
                 return None
@@ -110,9 +114,9 @@ class Extractor(object):
                 return re.search(r , self.data).group()
         else:
             return re.search(r , self.data).group()
+    
 
-
-
+		
     # def getImages(self):
     #     extractor = jpype.JClass(
     #         "de.l3s.boilerpipe.sax.ImageExtractor").INSTANCE
